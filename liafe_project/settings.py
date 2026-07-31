@@ -21,7 +21,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ] + [
-    origin for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split()
+    origin for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
     if origin
 ]
 
