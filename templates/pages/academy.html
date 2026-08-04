@@ -7,8 +7,8 @@
 {% block content %}
 
 <!-- HERO -->
-<section class="hero-page {% if service.hero_image %}has-photo{% endif %}">
-  {% if service.hero_image %}<div class="hero-photo-bg" style="background-image:url('{{ service.hero_image.url }}');"></div>{% endif %}
+<section class="hero-page has-photo">
+  <div class="hero-photo-bg" style="background-image:url('{% if service.hero_image %}{{ service.hero_image.url }}{% else %}{% static 'images/heroes/academy.png' %}{% endif %}');"></div>
   <div class="container" style="position:relative;z-index:2;">
     <div class="breadcrumb">
       <a href="{% url 'home' %}">Home</a>

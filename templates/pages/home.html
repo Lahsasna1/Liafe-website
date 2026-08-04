@@ -13,7 +13,7 @@
   <div class="hero-slider" id="heroSlider" aria-hidden="true">
     {% for slide in hero_slides %}
     <div class="hs-bg{% if forloop.first %} active{% endif %}"
-         {% if slide.background_image %}style="background-image:url('{{ slide.background_image.url }}');"{% endif %}>
+         style="background-image:url('{% if slide.background_image %}{{ slide.background_image.url }}{% else %}{% static 'images/heroes/home-campus.png' %}{% endif %}');">
     </div>
     {% endfor %}
   </div>
@@ -68,9 +68,10 @@
   {% else %}
 
   <!-- Static fallback hero -->
-  <div class="hero-bg {% if sections.hero.background_image or site.hero_background_image %}has-photo{% endif %}"
+  <div class="hero-bg has-photo"
     {% if sections.hero.background_image %}style="background-image:url('{{ sections.hero.background_image.url }}');"
-    {% elif site.hero_background_image %}style="background-image:url('{{ site.hero_background_image.url }}');"{% endif %}>
+    {% elif site.hero_background_image %}style="background-image:url('{{ site.hero_background_image.url }}');"
+    {% else %}style="background-image:url('{% static 'images/heroes/home-campus.png' %}');"{% endif %}>
   </div>
   <div class="hero-full">
     <div class="container">
