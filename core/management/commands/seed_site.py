@@ -177,14 +177,14 @@ class Command(BaseCommand):
             )
 
         cards = [
-            ('Shariah Structuring',  'Layers',      'End-to-end product and transaction structuring grounded in classical Islamic jurisprudence.'),
-            ('Product Development',  'Stack',       'Designing Sukuk, takaful, Murabaha, Ijarah, and bespoke compliant instruments.'),
-            ('Shariah Review',       'Eye',         'Independent review of documents, contracts, and processes for compliance.'),
-            ('Compliance Screening', 'CheckCircle', 'Equity, asset, and portfolio screening using leading methodologies.'),
-            ('Fatwa Issuance',       'Quote',       'Reasoned legal opinions delivered by qualified Shariah scholars.'),
-            ('Documentation',        'Edit',        'Drafting and reviewing Shariah governance, policies, and product documentation.'),
-            ('Shariah Audit',        'Search',      'Risk-based audit programmes covering products, transactions, and disclosures.'),
-            ('Ongoing Compliance',   'Shariah',     'Continuous monitoring and advisory relationships for sustained alignment.'),
+            ('Shariah Structuring',  'Blueprint',       'End-to-end product and transaction structuring grounded in classical Islamic jurisprudence.'),
+            ('Product Development',  'ProductCube',     'Designing Sukuk, takaful, Murabaha, Ijarah, and bespoke compliant instruments.'),
+            ('Shariah Review',       'ReviewLens',      'Independent review of documents, contracts, and processes for compliance.'),
+            ('Compliance Screening', 'ScreenShield',    'Equity, asset, and portfolio screening using leading methodologies.'),
+            ('Fatwa Issuance',       'SealScroll',      'Reasoned legal opinions delivered by qualified Shariah scholars.'),
+            ('Documentation',        'SignedDocument',  'Drafting and reviewing Shariah governance, policies, and product documentation.'),
+            ('Shariah Audit',        'AuditShield',     'Risk-based audit programmes covering products, transactions, and disclosures.'),
+            ('Ongoing Compliance',   'ContinuousCheck', 'Continuous monitoring and advisory relationships for sustained alignment.'),
         ]
         for i, (title, icon, desc) in enumerate(cards):
             obj, created = ServiceFeature.objects.update_or_create(
