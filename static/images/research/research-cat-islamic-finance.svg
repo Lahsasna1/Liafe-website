@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bgR1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7F3EA"/>
+      <stop offset="1" stop-color="#EFE9D8"/>
+    </linearGradient>
+    <pattern id="hatchR1" width="14" height="14" patternTransform="rotate(135)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#0B1F3A" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bgR1)"/>
+  <rect width="400" height="300" fill="url(#hatchR1)"/>
+  <circle cx="200" cy="150" r="92" fill="none" stroke="#C9A227" stroke-opacity="0.25" stroke-width="1"/>
+
+  <!-- scroll -->
+  <g transform="translate(200,150)" stroke="#0B1F3A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-46" y="-40" width="92" height="80" rx="4" stroke-width="2.4"/>
+    <line x1="-30" y1="-20" x2="30" y2="-20" stroke-opacity="0.55" stroke-width="1.8"/>
+    <line x1="-30" y1="-6" x2="30" y2="-6" stroke-opacity="0.55" stroke-width="1.8"/>
+    <line x1="-30" y1="8" x2="14" y2="8" stroke-opacity="0.55" stroke-width="1.8"/>
+    <circle cx="-30" cy="26" r="10" stroke="#C9A227" stroke-width="2.2"/>
+    <path d="M-33,26 l2,3 5,-6" stroke="#C9A227" stroke-width="1.8"/>
+  </g>
+</svg>

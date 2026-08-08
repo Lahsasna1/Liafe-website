@@ -117,15 +117,9 @@
   <div class="container">
     <div class="grid grid-2" style="gap:64px;align-items:center;">
       <div class="reveal-js">
-        {% if sections.about.image %}
         <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;">
-          <img src="{{ sections.about.image.url }}" alt="About LIAFE" style="width:100%;height:100%;object-fit:cover;">
+          <img src="{% if sections.about.image %}{{ sections.about.image.url }}{% else %}{% static 'images/sections/about-liafe.svg' %}{% endif %}" alt="About LIAFE" style="width:100%;height:100%;object-fit:cover;">
         </div>
-        {% else %}
-        <div class="placeholder" style="aspect-ratio:4/5;">
-          <span class="ph-label">London chambers photo</span>
-        </div>
-        {% endif %}
       </div>
       <div class="reveal-js d1">
         <span class="eyebrow">About LIAFE</span>
@@ -163,11 +157,9 @@
     <div class="grid grid-4">
       {% for service in services %}
       <div class="card reveal-js d{{ forloop.counter }}">
-        {% if service.image %}
-        <div class="card-img-wrap"><img src="{{ service.image.url }}" alt="{{ service.title }}"></div>
-        {% else %}
-        <div class="card-img-wrap placeholder"><span class="ph-label">{{ service.menu_title|default:service.title|lower }}</span></div>
-        {% endif %}
+        <div class="card-img-wrap">
+          <img src="{% if service.image %}{{ service.image.url }}{% elif service.slug == 'shariah-advisory' %}{% static 'images/services/service-shariah-advisory.svg' %}{% elif service.slug == 'academy' %}{% static 'images/services/service-academy.svg' %}{% elif service.slug == 'research-house' %}{% static 'images/services/service-research-house.svg' %}{% elif service.slug == 'publication' %}{% static 'images/services/service-publication.svg' %}{% else %}{% static 'images/services/service-shariah-advisory.svg' %}{% endif %}" alt="{{ service.title }}">
+        </div>
         <div class="card-icon">{% include 'partials/icons.html' with icon=service.icon_class size=22 %}</div>
         <h4>{{ service.title }}</h4>
         <p style="margin-top:8px;font-size:14px;">{{ service.short_description }}</p>
@@ -225,11 +217,7 @@
         </div>
       </div>
       <div class="reveal-js d1">
-        {% if sections.approach.image %}
-        <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;"><img src="{{ sections.approach.image.url }}" alt="Our approach" style="width:100%;height:100%;object-fit:cover;"></div>
-        {% else %}
-        <div class="placeholder dark" style="aspect-ratio:4/3;"><span class="ph-label">approach photo</span></div>
-        {% endif %}
+        <div style="border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;"><img src="{% if sections.approach.image %}{{ sections.approach.image.url }}{% else %}{% static 'images/sections/approach.svg' %}{% endif %}" alt="Our approach" style="width:100%;height:100%;object-fit:cover;"></div>
       </div>
     </div>
   </div>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="bgA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7F3EA"/>
+      <stop offset="1" stop-color="#EFE9D8"/>
+    </linearGradient>
+    <pattern id="hatchA" width="14" height="14" patternTransform="rotate(135)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#0B1F3A" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="500" fill="url(#bgA)"/>
+  <rect width="400" height="500" fill="url(#hatchA)"/>
+
+  <!-- radiating star motif -->
+  <g stroke="#C9A227" stroke-opacity="0.28" stroke-width="1">
+    <circle cx="200" cy="215" r="120" fill="none"/>
+    <circle cx="200" cy="215" r="150" fill="none" stroke-opacity="0.16"/>
+  </g>
+  <g transform="translate(200,215)" stroke="#0B1F3A" stroke-opacity="0.10" stroke-width="1.4">
+    <path d="M0,-95 L0,95 M-95,0 L95,0 M-67,-67 L67,67 M-67,67 L67,-67"/>
+  </g>
+
+  <!-- gold seal ring -->
+  <circle cx="200" cy="215" r="86" fill="none" stroke="#C9A227" stroke-width="2"/>
+  <circle cx="200" cy="215" r="78" fill="#FFFFFF" fill-opacity="0.5"/>
+
+  <!-- open book -->
+  <g transform="translate(200,222)">
+    <path d="M-58,-6 C-40,-20 -18,-16 0,-6 L0,42 C-18,32 -40,28 -58,42 Z" fill="none" stroke="#0B1F3A" stroke-width="3.2" stroke-linejoin="round"/>
+    <path d="M58,-6 C40,-20 18,-16 0,-6 L0,42 C18,32 40,28 58,42 Z" fill="none" stroke="#0B1F3A" stroke-width="3.2" stroke-linejoin="round"/>
+    <path d="M-46,-2 C-32,-11 -16,-9 -6,-3" fill="none" stroke="#0B1F3A" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.65"/>
+    <path d="M-46,10 C-32,1 -16,3 -6,9" fill="none" stroke="#0B1F3A" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.65"/>
+    <path d="M-46,22 C-32,13 -16,15 -6,21" fill="none" stroke="#0B1F3A" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.65"/>
+    <path d="M46,-2 C32,-11 16,-9 6,-3" fill="none" stroke="#0B1F3A" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.65"/>
+    <path d="M46,10 C32,1 16,3 6,9" fill="none" stroke="#0B1F3A" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.65"/>
+    <path d="M46,22 C32,13 16,15 6,21" fill="none" stroke="#0B1F3A" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.65"/>
+    <!-- rising light above the book -->
+    <g stroke="#C9A227" stroke-width="2" stroke-linecap="round">
+      <line x1="0" y1="-70" x2="0" y2="-52"/>
+      <line x1="-24" y1="-62" x2="-14" y2="-46"/>
+      <line x1="24" y1="-62" x2="14" y2="-46"/>
+    </g>
+    <circle cx="0" cy="-30" r="6" fill="#C9A227"/>
+  </g>
+
+  <!-- lower caption plate -->
+  <g transform="translate(200,432)">
+    <line x1="-70" y1="0" x2="70" y2="0" stroke="#0B1F3A" stroke-opacity="0.18" stroke-width="1.2"/>
+    <text x="0" y="26" text-anchor="middle" font-family="Georgia, 'Fraunces', serif" font-size="15" letter-spacing="3" fill="#0B1F3A" fill-opacity="0.55">LIAFE</text>
+  </g>
+</svg>

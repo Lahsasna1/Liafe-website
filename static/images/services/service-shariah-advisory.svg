@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bgS1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7F3EA"/>
+      <stop offset="1" stop-color="#EFE9D8"/>
+    </linearGradient>
+    <pattern id="hatchS1" width="14" height="14" patternTransform="rotate(135)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#0B1F3A" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#bgS1)"/>
+  <rect width="400" height="300" fill="url(#hatchS1)"/>
+  <circle cx="200" cy="150" r="92" fill="none" stroke="#C9A227" stroke-opacity="0.25" stroke-width="1"/>
+
+  <!-- scale of justice -->
+  <g transform="translate(200,150)" stroke="#0B1F3A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="0" y1="-44" x2="0" y2="40"/>
+    <line x1="-46" y1="-24" x2="46" y2="-24"/>
+    <path d="M-46,-24 L-62,10 A16,13 0 0 0 -30,10 Z"/>
+    <path d="M46,-24 L62,10 A16,13 0 0 1 30,10 Z"/>
+    <line x1="-20" y1="40" x2="20" y2="40"/>
+    <circle cx="0" cy="-44" r="5" fill="#C9A227" stroke="none"/>
+  </g>
+</svg>
