@@ -8,7 +8,13 @@
         {% if site.logo %}
           <img src="{{ site.logo.url }}" alt="{{ site.short_name }}" style="height:40px;width:auto;">
         {% else %}
-          <div class="brand-mark">L</div>
+          <div class="brand-mark">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <rect x="32" y="20" width="14" height="60" fill="#0B1F3A"/>
+              <rect x="32" y="66" width="36" height="14" fill="#0B1F3A"/>
+              <rect x="32" y="45" width="50" height="4.5" fill="#C9A227"/>
+            </svg>
+          </div>
           <div class="brand-text">
             <span class="name">{{ site.short_name }}</span>
             <span class="sub">London</span>
