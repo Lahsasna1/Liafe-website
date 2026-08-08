@@ -121,10 +121,10 @@ class Command(BaseCommand):
         if AboutStat.objects.exists():
             return
         stats = [
-            ('12',   '+',  'Markets Served',        0),
-            ('40',   '+',  'Programmes Delivered',   1),
-            ('25',   '',   'Senior Associates',      2),
-            ('£3.2', 'bn', 'Reviewed AUM',           3),
+            ('4',    '',  'Core Practices',        0),
+            ('3',    '',  'Global Regions',        1),
+            ('2025', '',  'Founded',               2),
+            ('100',  '%', 'Independent Advisory',  3),
         ]
         for value, suffix, label, order in stats:
             AboutStat.objects.create(value=value, suffix=suffix, label=label, order=order)
