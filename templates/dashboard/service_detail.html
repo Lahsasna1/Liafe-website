@@ -36,7 +36,7 @@
   </div>
 </div>
 
-{% if svc.slug == 'academy' %}
+{% if svc.key == 'academy' %}
 <!-- Academy: manage via Academy section -->
 <div class="db-card" style="margin-bottom:24px;padding:16px 20px;border-left:3px solid var(--primary);">
   <div style="font-size:13.5px;">
@@ -46,7 +46,7 @@
 </div>
 {% endif %}
 
-{% if svc.slug == 'research-house' %}
+{% if svc.key == 'research-house' %}
 <div class="db-card" style="margin-bottom:24px;padding:16px 20px;border-left:3px solid var(--primary);">
   <div style="font-size:13.5px;">
     <strong>Research content</strong> (categories, projects) is managed in the
@@ -55,7 +55,7 @@
 </div>
 {% endif %}
 
-{% if svc.slug == 'publication' %}
+{% if svc.key == 'publication' %}
 <div class="db-card" style="margin-bottom:24px;padding:16px 20px;border-left:3px solid var(--primary);">
   <div style="font-size:13.5px;">
     <strong>Publication content</strong> is managed in the
@@ -149,7 +149,7 @@
 
 <!-- ── Delivery Modes (Academy) ── -->
 {% with items=features_by_type.delivery %}
-{% if items or svc.slug == 'academy' %}
+{% if items or svc.key == 'academy' %}
 <div class="db-card" style="margin-bottom:20px;">
   <div class="db-card-header">
     <div>
@@ -193,7 +193,7 @@
 
 <!-- ── Research Values ── -->
 {% with items=features_by_type.value %}
-{% if items or svc.slug == 'research-house' %}
+{% if items or svc.key == 'research-house' %}
 <div class="db-card" style="margin-bottom:20px;">
   <div class="db-card-header">
     <div>

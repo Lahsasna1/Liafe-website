@@ -158,7 +158,7 @@
       {% for service in services %}
       <div class="card reveal-js d{{ forloop.counter }}">
         <div class="card-img-wrap">
-          <img src="{% if service.image %}{{ service.image.url }}{% elif service.slug == 'shariah-advisory' %}{% static 'images/services/service-shariah-advisory.svg' %}{% elif service.slug == 'academy' %}{% static 'images/services/service-academy.svg' %}{% elif service.slug == 'research-house' %}{% static 'images/services/service-research-house.svg' %}{% elif service.slug == 'publication' %}{% static 'images/services/service-publication.svg' %}{% else %}{% static 'images/services/service-shariah-advisory.svg' %}{% endif %}" alt="{{ service.title }}">
+          <img src="{% if service.image %}{{ service.image.url }}{% elif service.key == 'shariah-advisory' %}{% static 'images/services/service-shariah-advisory.svg' %}{% elif service.key == 'academy' %}{% static 'images/services/service-academy.svg' %}{% elif service.key == 'research-house' %}{% static 'images/services/service-research-house.svg' %}{% elif service.key == 'publication' %}{% static 'images/services/service-publication.svg' %}{% else %}{% static 'images/services/service-shariah-advisory.svg' %}{% endif %}" alt="{{ service.title }}">
         </div>
         <div class="card-icon">{% include 'partials/icons.html' with icon=service.icon_class size=22 %}</div>
         <h4>{{ service.title }}</h4>

@@ -262,7 +262,7 @@ def service_feature_delete(request, service_pk, pk):
 def academy(request):
     categories    = CourseCategory.objects.all()
     courses       = Course.objects.select_related('category').all()
-    academy_svc   = Service.objects.filter(slug='academy').first()
+    academy_svc   = Service.objects.filter(key='academy').first()
     return render(request, 'dashboard/academy.html', {
         'categories': categories, 'courses': courses,
         'academy_svc': academy_svc, 'page': 'academy',
@@ -323,7 +323,7 @@ def course_delete(request, pk):
 def research(request):
     categories   = ResearchCategory.objects.all()
     projects     = ResearchProject.objects.select_related('category').all()
-    research_svc = Service.objects.filter(slug='research-house').first()
+    research_svc = Service.objects.filter(key='research-house').first()
     return render(request, 'dashboard/research.html', {
         'categories': categories, 'projects': projects,
         'research_svc': research_svc, 'page': 'research',

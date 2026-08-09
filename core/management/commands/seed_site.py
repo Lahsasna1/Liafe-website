@@ -143,9 +143,12 @@ class Command(BaseCommand):
              3),
         ]
         for (slug, title, menu, short, icon, hero_title, hero_desc, order) in services:
-            obj, created = Service.objects.update_or_create(
-                slug=slug,
-                defaults=dict(title=title, menu_title=menu, short_description=short,
+            # Matched on `key` (fixed, never dashboard-editable) rather than `slug`, and only
+            # applies these defaults on first creation — an existing row is left untouched so a
+            # reseed can never silently overwrite an admin's title/slug/content customisation.
+            obj, created = Service.objects.get_or_create(
+                key=slug,
+                defaults=dict(slug=slug, title=title, menu_title=menu, short_description=short,
                               icon_class=icon, hero_title=hero_title, hero_description=hero_desc,
                               cta_title=f'Ready to learn more about {title}?',
                               cta_button_text='Get in Touch', cta_button_link='/contact/',
@@ -156,7 +159,7 @@ class Command(BaseCommand):
     # ── Shariah Features ────────────────────────────────────────
     def seed_shariah_features(self):
         try:
-            shariah = Service.objects.get(slug='shariah-advisory')
+            shariah = Service.objects.get(key='shariah-advisory')
         except Service.DoesNotExist:
             return
 
@@ -196,7 +199,7 @@ class Command(BaseCommand):
     # ── Academy Delivery Modes ──────────────────────────────────
     def seed_academy_delivery_modes(self):
         try:
-            academy = Service.objects.get(slug='academy')
+            academy = Service.objects.get(key='academy')
         except Service.DoesNotExist:
             return
         modes = [
@@ -215,7 +218,7 @@ class Command(BaseCommand):
     # ── Research Values ─────────────────────────────────────────
     def seed_research_values(self):
         try:
-            research = Service.objects.get(slug='research-house')
+            research = Service.objects.get(key='research-house')
         except Service.DoesNotExist:
             return
         values = [

@@ -5,7 +5,7 @@ from publications.models import Publication
 
 
 def shariah(request):
-    service = get_object_or_404(Service, slug='shariah-advisory', is_active=True)
+    service = get_object_or_404(Service, key='shariah-advisory', is_active=True)
     process_items = service.features.filter(item_type='process', is_active=True)
     card_items    = service.features.filter(item_type='card', is_active=True)
     return render(request, 'pages/shariah.html', {
@@ -16,7 +16,7 @@ def shariah(request):
 
 
 def academy(request):
-    service        = get_object_or_404(Service, slug='academy', is_active=True)
+    service        = get_object_or_404(Service, key='academy', is_active=True)
     categories     = CourseCategory.objects.filter(is_active=True)
     courses        = Course.objects.filter(is_active=True)
     delivery_modes = service.features.filter(item_type='delivery', is_active=True)
@@ -29,7 +29,7 @@ def academy(request):
 
 
 def research(request):
-    service      = get_object_or_404(Service, slug='research-house', is_active=True)
+    service      = get_object_or_404(Service, key='research-house', is_active=True)
     categories   = ResearchCategory.objects.filter(is_active=True)
     projects     = ResearchProject.objects.filter(is_active=True)
     inquiry_form = InquiryForm(initial={'inquiry_type': 'research'})
@@ -55,7 +55,7 @@ def research(request):
 
 
 def publication(request):
-    service   = get_object_or_404(Service, slug='publication', is_active=True)
+    service   = get_object_or_404(Service, key='publication', is_active=True)
     pub_type  = request.GET.get('type', '')
     pubs      = Publication.objects.filter(is_active=True)
     if pub_type:

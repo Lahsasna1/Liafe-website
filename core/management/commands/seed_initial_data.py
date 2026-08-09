@@ -136,28 +136,28 @@ class Command(BaseCommand):
         if Service.objects.exists():
             return
         services = [
-            dict(slug='shariah-advisory', title='Shariah Advisory', menu_title='Shariah Advisory',
+            dict(slug='shariah-advisory', key='shariah-advisory', title='Shariah Advisory', menu_title='Shariah Advisory',
                  icon_class='Shariah', order=0,
                  short_description='Independent Shariah advisory, structuring, and audit for ethical, compliant finance.',
                  hero_title='Ensuring Compliance, Building Trust',
                  hero_description='LIAFE provides expert Shariah advisory services to help businesses grow ethically, transparently, and in harmony with Shariah principles.',
                  cta_title='Ready to learn more about Shariah Advisory?',
                  cta_button_text='Get in Touch', cta_button_link='/contact/'),
-            dict(slug='academy', title='Academy', menu_title='Academy',
+            dict(slug='academy', key='academy', title='Academy', menu_title='Academy',
                  icon_class='Academy', order=1,
                  short_description='Executive education, structured training, and online learning for finance professionals.',
                  hero_title='Professional Training for the Modern Finance Practitioner',
                  hero_description='The Academy is LIAFE\'s education wing, offering executive and structured professional training both in-person and online.',
                  cta_title='Ready to learn more about Academy?',
                  cta_button_text='Get in Touch', cta_button_link='/contact/'),
-            dict(slug='research-house', title='Research House', menu_title='Research House',
+            dict(slug='research-house', key='research-house', title='Research House', menu_title='Research House',
                  icon_class='Research', order=2,
                  short_description='Dedicated R&D in Islamic finance, social sciences, and fintech.',
                  hero_title='Dedicated R&D in Islamic Finance, Social Sciences, and Fintech',
                  hero_description='LIAFE Research Centre specialises in research and development for social sciences, fintech, Islamic finance, and Shariah studies.',
                  cta_title='Ready to learn more about Research House?',
                  cta_button_text='Get in Touch', cta_button_link='/contact/'),
-            dict(slug='publication', title='Publication', menu_title='Publication',
+            dict(slug='publication', key='publication', title='Publication', menu_title='Publication',
                  icon_class='Publication', order=3,
                  short_description='Books, articles, journal papers, and thought leadership that turn insight into impact.',
                  hero_title='Research, Insights, and Global Perspectives',
@@ -175,9 +175,9 @@ class Command(BaseCommand):
         if ServiceFeature.objects.exists():
             return
         try:
-            shariah = Service.objects.get(slug='shariah-advisory')
-            academy = Service.objects.get(slug='academy')
-            research = Service.objects.get(slug='research-house')
+            shariah = Service.objects.get(key='shariah-advisory')
+            academy = Service.objects.get(key='academy')
+            research = Service.objects.get(key='research-house')
         except Service.DoesNotExist:
             return
 

@@ -5,6 +5,8 @@ from ckeditor.fields import RichTextField
 class Service(models.Model):
     title             = models.CharField(max_length=200)
     slug              = models.SlugField(unique=True)
+    key               = models.SlugField(max_length=64, unique=True, null=True, blank=True, editable=False,
+                                          help_text="Internal routing identifier, fixed at creation. Not shown in the dashboard.")
     menu_title        = models.CharField(max_length=120, blank=True)
     icon_class        = models.CharField(max_length=64, blank=True, help_text="e.g. 'Shariah', 'Academy'")
     short_description = models.CharField(max_length=400)
@@ -35,13 +37,13 @@ class Service(models.Model):
 
     def get_absolute_url(self):
         from django.urls import reverse
-        slug_map = {
+        key_map = {
             'shariah-advisory': 'shariah',
             'academy':          'academy',
             'research-house':   'research',
             'publication':      'publication',
         }
-        name = slug_map.get(self.slug, 'home')
+        name = key_map.get(self.key, 'home')
         return reverse(name)
 
 
