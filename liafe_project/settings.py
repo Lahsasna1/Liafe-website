@@ -16,6 +16,11 @@ if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
     ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost 127.0.0.1').replace(',', ' ').split()
+    # Railway injects these automatically and its internal healthcheck probes the
+    # private domain directly, so always trust them regardless of ALLOWED_HOSTS above.
+    for _railway_host in (os.environ.get('RAILWAY_PRIVATE_DOMAIN'), os.environ.get('RAILWAY_PUBLIC_DOMAIN')):
+        if _railway_host and _railway_host not in ALLOWED_HOSTS:
+            ALLOWED_HOSTS.append(_railway_host)
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.trycloudflare.com',
