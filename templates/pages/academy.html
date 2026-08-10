@@ -11,18 +11,18 @@
   <div class="hero-photo-bg" style="background-image:url('{% if service.hero_image %}{{ service.hero_image.url }}{% else %}{% static 'images/heroes/academy.png' %}{% endif %}');"></div>
   <div class="container" style="position:relative;z-index:2;">
     <div class="breadcrumb">
-      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'home' %}">{{ site_text.breadcrumb_home_label|default:"Home" }}</a>
       <span style="opacity:.4;">/</span>
-      <span>Services</span>
+      <span>{{ site_text.breadcrumb_services_label|default:"Services" }}</span>
       <span style="opacity:.4;">/</span>
-      <span style="color:var(--gold-soft);">Academy</span>
+      <span style="color:var(--gold-soft);">{{ site_text.academy_eyebrow|default:"Academy" }}</span>
     </div>
-    <span class="eyebrow reveal-js" style="color:var(--gold-soft);">Academy</span>
+    <span class="eyebrow reveal-js" style="color:var(--gold-soft);">{{ site_text.academy_eyebrow|default:"Academy" }}</span>
     <h1 class="reveal-js d1" style="margin-top:16px;">{{ service.hero_title|default:"Professional Training for the Modern Finance Practitioner" }}</h1>
     <p class="lede reveal-js d2">{{ service.hero_description|default:"The Academy is LIAFE's education wing, offering executive and structured professional training both in-person and online through webinars, workshops, and e-learning." }}</p>
     <div style="margin-top:36px;" class="reveal-js d3">
-      <a href="#courses" class="btn btn-primary btn-lg">Explore Programmes</a>
-      <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg" style="margin-left:12px;">Enquire Now</a>
+      <a href="#courses" class="btn btn-primary btn-lg">{{ site_text.academy_explore_programmes_button|default:"Explore Programmes" }}</a>
+      <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg" style="margin-left:12px;">{{ site_text.academy_enquire_now_button|default:"Enquire Now" }}</a>
     </div>
   </div>
 </section>
@@ -38,7 +38,7 @@
         <p style="margin-top:6px;font-size:13px;">{{ item.description }}</p>
       </div>
       {% empty %}
-      <div class="card reveal-js" style="padding:20px;"><h4 style="font-size:15px;">Delivery modes coming soon</h4></div>
+      <div class="card reveal-js" style="padding:20px;"><h4 style="font-size:15px;">{{ site_text.academy_delivery_empty_title|default:"Delivery modes coming soon" }}</h4></div>
       {% endfor %}
     </div>
   </div>
@@ -48,9 +48,9 @@
 <section class="section" id="courses">
   <div class="container">
     <div style="text-align:center;max-width:640px;margin:0 auto 56px;" class="reveal-js">
-      <span class="eyebrow center">Course Catalogue</span>
-      <h2 style="margin-top:16px;">Four disciplines. Every level.</h2>
-      <p style="margin-top:16px;">From foundations to executive practice — structured learning designed around real-world finance.</p>
+      <span class="eyebrow center">{{ site_text.academy_catalogue_eyebrow|default:"Course Catalogue" }}</span>
+      <h2 style="margin-top:16px;">{{ site_text.academy_disciplines_heading|default:"Four disciplines. Every level." }}</h2>
+      <p style="margin-top:16px;">{{ site_text.academy_disciplines_subtitle|default:"From foundations to executive practice — structured learning designed around real-world finance." }}</p>
     </div>
     <div class="grid grid-2" style="gap:24px;">
       {% for cat in categories %}
@@ -81,9 +81,9 @@
       </div>
       {% empty %}
       <div class="coming-soon">
-        <h3>Courses coming soon</h3>
-        <p style="margin-top:12px;">Our programme catalogue is being finalised. Contact us to register your interest.</p>
-        <a href="{% url 'contact' %}" class="btn btn-primary" style="margin-top:24px;">Get in touch</a>
+        <h3>{{ site_text.academy_courses_empty_title|default:"Courses coming soon" }}</h3>
+        <p style="margin-top:12px;">{{ site_text.academy_courses_empty_body|default:"Our programme catalogue is being finalised. Contact us to register your interest." }}</p>
+        <a href="{% url 'contact' %}" class="btn btn-primary" style="margin-top:24px;">{{ site_text.academy_courses_empty_button|default:"Get in touch" }}</a>
       </div>
       {% endfor %}
     </div>
@@ -97,7 +97,7 @@
       <h2>{{ service.cta_title|default:"Ready to develop your team?" }}</h2>
       <div class="ctas">
         <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">{{ service.cta_button_text|default:"Enquire About Training" }}</a>
-        <a href="{% url 'home' %}" class="btn btn-outline-light">Back to Home</a>
+        <a href="{% url 'home' %}" class="btn btn-outline-light">{{ site_text.academy_back_to_home_button|default:"Back to Home" }}</a>
       </div>
     </div>
   </div>
