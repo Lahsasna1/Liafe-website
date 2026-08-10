@@ -11,17 +11,17 @@
   <div class="hero-photo-bg" style="background-image:url('{% if service.hero_image %}{{ service.hero_image.url }}{% else %}{% static 'images/heroes/shariah-advisory.png' %}{% endif %}');"></div>
   <div class="container" style="position:relative;z-index:2;">
     <div class="breadcrumb">
-      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'home' %}">{{ site_text.breadcrumb_home_label|default:"Home" }}</a>
       <span style="opacity:.4;">/</span>
-      <span>Services</span>
+      <span>{{ site_text.breadcrumb_services_label|default:"Services" }}</span>
       <span style="opacity:.4;">/</span>
-      <span style="color:var(--gold-soft);">Shariah Advisory</span>
+      <span style="color:var(--gold-soft);">{{ site_text.shariah_eyebrow|default:"Shariah Advisory" }}</span>
     </div>
-    <span class="eyebrow reveal-js" style="color:var(--gold-soft);">Shariah Advisory</span>
+    <span class="eyebrow reveal-js" style="color:var(--gold-soft);">{{ site_text.shariah_eyebrow|default:"Shariah Advisory" }}</span>
     <h1 class="reveal-js d1" style="margin-top:16px;">{{ service.hero_title|default:"Ensuring Compliance, Building Trust" }}</h1>
     <p class="lede reveal-js d2">{{ service.hero_description|default:"LIAFE provides expert Shariah advisory services to help businesses grow ethically, transparently, and in harmony with Shariah principles. We bridge faith and finance with clarity, structure, and integrity." }}</p>
     <div style="margin-top:36px;" class="reveal-js d3">
-      <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Request Advisory</a>
+      <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">{{ site_text.shariah_request_advisory_button|default:"Request Advisory" }}</a>
     </div>
   </div>
 </section>
@@ -31,8 +31,8 @@
 <section class="section">
   <div class="container">
     <div style="text-align:center;max-width:640px;margin:0 auto 56px;" class="reveal-js">
-      <span class="eyebrow center">Our Process</span>
-      <h2 style="margin-top:16px;">Eight steps to compliant, confident outcomes.</h2>
+      <span class="eyebrow center">{{ site_text.shariah_process_eyebrow|default:"Our Process" }}</span>
+      <h2 style="margin-top:16px;">{{ site_text.shariah_steps_heading|default:"Eight steps to compliant, confident outcomes." }}</h2>
     </div>
     <div class="grid grid-2" style="gap:16px;">
       {% for item in process_items %}
@@ -54,8 +54,8 @@
 <section class="section beige">
   <div class="container">
     <div style="text-align:center;max-width:640px;margin:0 auto 56px;" class="reveal-js">
-      <span class="eyebrow center">What We Offer</span>
-      <h2 style="margin-top:16px;">Specialist advisory across all dimensions of Shariah compliance.</h2>
+      <span class="eyebrow center">{{ site_text.shariah_offer_eyebrow|default:"What We Offer" }}</span>
+      <h2 style="margin-top:16px;">{{ site_text.shariah_dimensions_heading|default:"Specialist advisory across all dimensions of Shariah compliance." }}</h2>
     </div>
     <div class="grid grid-4">
       {% for item in card_items %}
@@ -79,7 +79,7 @@
       <h2>{{ service.cta_title|default:"Ready to achieve full Shariah compliance?" }}</h2>
       <div class="ctas">
         <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">{{ service.cta_button_text|default:"Contact Our Advisors" }}</a>
-        <a href="{% url 'home' %}" class="btn btn-outline-light">Back to Home</a>
+        <a href="{% url 'home' %}" class="btn btn-outline-light">{{ site_text.shariah_back_to_home_button|default:"Back to Home" }}</a>
       </div>
     </div>
   </div>
