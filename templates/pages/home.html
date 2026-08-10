@@ -24,7 +24,7 @@
       <div class="hs-contents">
         {% for slide in hero_slides %}
         <div class="hs-content{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.counter0 }}">
-          <span class="eyebrow reveal-js" style="color:var(--gold-soft);">London Consultancy</span>
+          <span class="eyebrow reveal-js" style="color:var(--gold-soft);">{{ site_text.home_hero_eyebrow|default:"London Consultancy" }}</span>
           <h1 class="reveal-js d1" style="margin-top:16px;">{{ slide.title }}</h1>
           {% if slide.subtitle %}
           <p class="lede reveal-js d2">{{ slide.subtitle }}</p>
@@ -75,7 +75,7 @@
   </div>
   <div class="hero-full">
     <div class="container">
-      <span class="eyebrow reveal-js">London Consultancy</span>
+      <span class="eyebrow reveal-js">{{ site_text.home_hero_eyebrow|default:"London Consultancy" }}</span>
       <h1 class="reveal-js d1" style="margin-top:16px;">{{ sections.hero.title|default:site.company_name }}</h1>
       <p class="lede reveal-js d2">
         {% if sections.hero.subtitle %}{{ sections.hero.subtitle }}{% else %}Shariah Advisory &ndash; Academy &ndash; Research &amp; Development &ndash; Publications{% endif %}
@@ -88,7 +88,7 @@
           {{ sections.hero.button_text|default:"Consult Us" }}
           <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="#services" class="btn btn-outline-light btn-lg">Explore Services</a>
+        <a href="#services" class="btn btn-outline-light btn-lg">{{ site_text.home_explore_services_button|default:"Explore Services" }}</a>
       </div>
     </div>
   </div>
@@ -120,7 +120,7 @@
         </div>
       </div>
       <div class="reveal-js d1">
-        <span class="eyebrow">About LIAFE</span>
+        <span class="eyebrow">{{ site_text.home_about_eyebrow|default:"About LIAFE" }}</span>
         <h2 style="margin-top:16px;">
           {{ sections.about.title|default:"A consultancy where knowledge, innovation and integrity meet." }}
         </h2>
@@ -148,7 +148,7 @@
 <section class="section beige" id="services">
   <div class="container">
     <div style="text-align:center;max-width:720px;margin:0 auto 56px;" class="reveal-js">
-      <span class="eyebrow center">Core Services</span>
+      <span class="eyebrow center">{{ site_text.home_core_services_eyebrow|default:"Core Services" }}</span>
       <h2 style="margin-top:16px;">{{ sections.core_services.title|default:"Four practices, one standard of excellence." }}</h2>
       <p style="margin-top:16px;">{{ sections.core_services.subtitle|default:"Every engagement draws on the full strength of LIAFE — advisory, education, research, and publication working in concert." }}</p>
     </div>
@@ -163,7 +163,7 @@
         <p style="margin-top:8px;font-size:14px;">{{ service.short_description }}</p>
         <div style="margin-top:20px;">
           <a href="{{ service.get_absolute_url }}" class="btn btn-ghost btn-sm">
-            Know More <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            {{ site_text.home_know_more_button|default:"Know More" }} <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
       </div>
@@ -181,7 +181,7 @@
   <div class="container">
     <div class="grid grid-2" style="gap:64px;margin-bottom:56px;align-items:end;">
       <div class="reveal-js">
-        <span class="eyebrow">Why Choose LIAFE</span>
+        <span class="eyebrow">{{ site_text.home_why_choose_eyebrow|default:"Why Choose LIAFE" }}</span>
         <h2 style="margin-top:16px;">{{ sections.why_choose_us.title|default:"Six principles that govern everything we deliver." }}</h2>
       </div>
       <div class="reveal-js d1">
@@ -205,13 +205,13 @@
   <div class="container">
     <div class="grid grid-2" style="gap:64px;align-items:center;">
       <div class="reveal-js">
-        <span class="eyebrow" style="color:var(--gold-soft);">Our Approach</span>
+        <span class="eyebrow" style="color:var(--gold-soft);">{{ site_text.home_approach_eyebrow|default:"Our Approach" }}</span>
         <h2 style="margin-top:16px;color:#fff;">{{ sections.approach.title|default:"Faith. Finance. Evidence. Working together." }}</h2>
         <p style="margin-top:20px;color:rgba(255,255,255,.78);font-size:17px;line-height:1.7;">
           {% if sections.approach.description %}{{ sections.approach.description|safe }}{% else %}We sit at the intersection of classical scholarship and modern finance. Our engagements start with the client's commercial and regulatory reality and end with structures that are defensible, transparent, and durable.{% endif %}
         </p>
         <div style="margin-top:32px;">
-          <a href="{% url 'contact' %}" class="btn btn-outline-light">Start a conversation</a>
+          <a href="{% url 'contact' %}" class="btn btn-outline-light">{{ site_text.home_start_conversation_button|default:"Start a conversation" }}</a>
         </div>
       </div>
       <div class="reveal-js d1">
@@ -228,7 +228,7 @@
       <h2>{{ sections.cta.title|default:"Ready to work with LIAFE?" }}</h2>
       <div class="ctas">
         <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">{{ sections.cta.button_text|default:"Contact Us" }}</a>
-        <a href="#services" class="btn btn-outline-light">Our Services</a>
+        <a href="#services" class="btn btn-outline-light">{{ site_text.home_our_services_button|default:"Our Services" }}</a>
       </div>
     </div>
   </div>
