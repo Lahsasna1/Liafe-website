@@ -61,25 +61,7 @@
       {% for item in card_items %}
       <div class="card reveal-js d{{ forloop.counter }}">
         <div class="card-icon">
-          {% if item.title == 'Shariah Structuring' %}
-            {% include 'partials/icons.html' with icon='Blueprint' size=22 %}
-          {% elif item.title == 'Product Development' %}
-            {% include 'partials/icons.html' with icon='ProductCube' size=22 %}
-          {% elif item.title == 'Shariah Review' %}
-            {% include 'partials/icons.html' with icon='ReviewLens' size=22 %}
-          {% elif item.title == 'Compliance Screening' %}
-            {% include 'partials/icons.html' with icon='ScreenShield' size=22 %}
-          {% elif item.title == 'Fatwa Issuance' %}
-            {% include 'partials/icons.html' with icon='SealScroll' size=22 %}
-          {% elif item.title == 'Documentation' %}
-            {% include 'partials/icons.html' with icon='SignedDocument' size=22 %}
-          {% elif item.title == 'Shariah Audit' %}
-            {% include 'partials/icons.html' with icon='AuditShield' size=22 %}
-          {% elif item.title == 'Ongoing Compliance' %}
-            {% include 'partials/icons.html' with icon='ContinuousCheck' size=22 %}
-          {% else %}
-            {% include 'partials/icons.html' with icon=item.icon_class size=22 %}
-          {% endif %}
+          {% include 'partials/icons.html' with icon=item.icon_class size=22 %}
         </div>
         <h4>{{ item.title }}</h4>
         <p style="margin-top:8px;font-size:14px;line-height:1.6;">{{ item.description }}</p>

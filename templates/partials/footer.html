@@ -27,6 +27,11 @@
         </p>
         <!-- Social -->
         <div style="display:flex;gap:12px;margin-top:20px;">
+          {% if site.facebook_url %}
+          <a href="{{ site.facebook_url }}" target="_blank" rel="noopener" style="display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.15);border-radius:6px;color:rgba(255,255,255,.6);transition:color .2s,border-color .2s;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.2-1.5 1.5-1.5h1.6V4.3C15.8 4.2 14.9 4 13.8 4c-2.2 0-3.8 1.4-3.8 3.9V10.5H7.5v3H10V21h3.5z"/></svg>
+          </a>
+          {% endif %}
           {% if site.linkedin_url %}
           <a href="{{ site.linkedin_url }}" target="_blank" rel="noopener" style="display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.15);border-radius:6px;color:rgba(255,255,255,.6);transition:color .2s,border-color .2s;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -48,10 +53,9 @@
       <!-- Services -->
       <div>
         <h4>Services</h4>
-        <a href="{% url 'shariah' %}">Shariah Advisory</a>
-        <a href="{% url 'academy' %}">Academy</a>
-        <a href="{% url 'research' %}">Research House</a>
-        <a href="{% url 'publication' %}">Publication</a>
+        {% for svc in nav_services %}
+        <a href="{{ svc.get_absolute_url }}">{{ svc.menu_title|default:svc.title }}</a>
+        {% endfor %}
       </div>
 
       <!-- Company -->

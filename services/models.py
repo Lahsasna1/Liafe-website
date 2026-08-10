@@ -8,6 +8,8 @@ class Service(models.Model):
     key               = models.SlugField(max_length=64, unique=True, null=True, blank=True, editable=False,
                                           help_text="Internal routing identifier, fixed at creation. Not shown in the dashboard.")
     menu_title        = models.CharField(max_length=120, blank=True)
+    nav_subtitle      = models.CharField(max_length=150, blank=True,
+                                          help_text="Short line shown in the header dropdown / footer. Leave blank to reuse the short description.")
     icon_class        = models.CharField(max_length=64, blank=True, help_text="e.g. 'Shariah', 'Academy'")
     short_description = models.CharField(max_length=400)
     full_description  = RichTextField(blank=True)

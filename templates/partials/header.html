@@ -32,22 +32,12 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="dropdown-menu">
-            <a href="{% url 'shariah' %}" class="dropdown-item">
-              <div class="dd-icon">{% include 'partials/icons.html' with icon="Shariah" size=18 %}</div>
-              <div><div class="dd-title">Shariah Advisory</div><div class="dd-sub">Compliance, structuring & Shariah audit</div></div>
+            {% for svc in nav_services %}
+            <a href="{{ svc.get_absolute_url }}" class="dropdown-item">
+              <div class="dd-icon">{% include 'partials/icons.html' with icon=svc.icon_class size=18 %}</div>
+              <div><div class="dd-title">{{ svc.menu_title|default:svc.title }}</div><div class="dd-sub">{{ svc.nav_subtitle|default:svc.short_description|truncatechars:60 }}</div></div>
             </a>
-            <a href="{% url 'academy' %}" class="dropdown-item">
-              <div class="dd-icon">{% include 'partials/icons.html' with icon="Academy" size=18 %}</div>
-              <div><div class="dd-title">Academy</div><div class="dd-sub">Executive education & professional training</div></div>
-            </a>
-            <a href="{% url 'research' %}" class="dropdown-item">
-              <div class="dd-icon">{% include 'partials/icons.html' with icon="Research" size=18 %}</div>
-              <div><div class="dd-title">Research House</div><div class="dd-sub">R&D in Islamic finance & fintech</div></div>
-            </a>
-            <a href="{% url 'publication' %}" class="dropdown-item">
-              <div class="dd-icon">{% include 'partials/icons.html' with icon="Publication" size=18 %}</div>
-              <div><div class="dd-title">Publication</div><div class="dd-sub">Books, reports & thought leadership</div></div>
-            </a>
+            {% endfor %}
           </div>
         </div>
 
@@ -76,10 +66,9 @@
 <div class="mobile-menu" id="mobile-menu">
   <a href="{% url 'home' %}" class="m-item">Home</a>
   <span class="m-item" style="cursor:default;color:var(--muted);font-size:14px;font-family:var(--font-sans);letter-spacing:.12em;text-transform:uppercase;">Services</span>
-  <a href="{% url 'shariah' %}" class="m-sub">Shariah Advisory</a>
-  <a href="{% url 'academy' %}" class="m-sub">Academy</a>
-  <a href="{% url 'research' %}" class="m-sub">Research House</a>
-  <a href="{% url 'publication' %}" class="m-sub">Publication</a>
+  {% for svc in nav_services %}
+  <a href="{{ svc.get_absolute_url }}" class="m-sub">{{ svc.menu_title|default:svc.title }}</a>
+  {% endfor %}
   <a href="{% url 'contact' %}" class="m-item">Contact Us</a>
   {% for item in nav_items %}
   <a href="{{ item.get_url }}" class="m-item" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>{{ item.label }}</a>
