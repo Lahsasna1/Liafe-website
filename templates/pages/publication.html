@@ -11,13 +11,13 @@
   <div class="hero-photo-bg" style="background-image:url('{% if service.hero_image %}{{ service.hero_image.url }}{% else %}{% static 'images/heroes/publications.png' %}{% endif %}');"></div>
   <div class="container" style="position:relative;z-index:2;">
     <div class="breadcrumb">
-      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'home' %}">{{ site_text.breadcrumb_home_label|default:"Home" }}</a>
       <span style="opacity:.4;">/</span>
-      <span>Services</span>
+      <span>{{ site_text.breadcrumb_services_label|default:"Services" }}</span>
       <span style="opacity:.4;">/</span>
-      <span style="color:var(--gold-soft);">Publication</span>
+      <span style="color:var(--gold-soft);">{{ site_text.publication_breadcrumb_current|default:"Publication" }}</span>
     </div>
-    <span class="eyebrow reveal-js" style="color:var(--gold-soft);">Publications</span>
+    <span class="eyebrow reveal-js" style="color:var(--gold-soft);">{{ site_text.publication_eyebrow|default:"Publications" }}</span>
     <h1 class="reveal-js d1" style="margin-top:16px;">{{ service.hero_title|default:"Research, Insights, and Global Perspectives" }}</h1>
     <p class="lede reveal-js d2">{{ service.hero_description|default:"LIAFE publications turn insight into impact. Our books and articles bring knowledge to life, offering ideas that inspire growth, ethics, and innovation." }}</p>
   </div>
@@ -29,7 +29,7 @@
 
     <!-- Filter chips -->
     <div class="filter-bar reveal-js">
-      <a href="{% url 'publication' %}" class="filter-chip {% if not active_type %}active{% endif %}">All</a>
+      <a href="{% url 'publication' %}" class="filter-chip {% if not active_type %}active{% endif %}">{{ site_text.publication_all_filter|default:"All" }}</a>
       {% for value, label in pub_types %}
       <a href="{% url 'publication' %}?type={{ value }}" class="filter-chip {% if active_type == value %}active{% endif %}">{{ label }}</a>
       {% endfor %}
@@ -56,17 +56,17 @@
             {% if pub.pdf_file %}
             <a href="{{ pub.pdf_file.url }}" class="btn btn-outline btn-sm" target="_blank" rel="noopener">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>
-              PDF
+              {{ site_text.publication_pdf_button|default:"PDF" }}
             </a>
             {% endif %}
             {% if pub.external_link %}
             <a href="{{ pub.external_link }}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-              Read More
+              {{ site_text.publication_read_more_button|default:"Read More" }}
               <svg class="arr" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
             {% endif %}
             {% if not pub.pdf_file and not pub.external_link %}
-            <span class="tag-pill" style="font-size:11px;">Coming Soon</span>
+            <span class="tag-pill" style="font-size:11px;">{{ site_text.publication_coming_soon_tag|default:"Coming Soon" }}</span>
             {% endif %}
           </div>
         </div>
@@ -80,9 +80,9 @@
       <div style="width:56px;height:56px;background:var(--beige-2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
         {% include 'partials/icons.html' with icon="Publication" size=24 %}
       </div>
-      <h3 style="font-size:clamp(22px,2.2vw,28px);">Publications coming soon</h3>
-      <p style="margin-top:12px;color:var(--muted);font-size:15px;">Our editorial team is preparing the first publications. Register your interest to be notified on release.</p>
-      <a href="{% url 'contact' %}" class="btn btn-primary btn-lg" style="margin-top:28px;">Stay informed</a>
+      <h3 style="font-size:clamp(22px,2.2vw,28px);">{{ site_text.publication_empty_title|default:"Publications coming soon" }}</h3>
+      <p style="margin-top:12px;color:var(--muted);font-size:15px;">{{ site_text.publication_empty_body|default:"Our editorial team is preparing the first publications. Register your interest to be notified on release." }}</p>
+      <a href="{% url 'contact' %}" class="btn btn-primary btn-lg" style="margin-top:28px;">{{ site_text.publication_empty_button|default:"Stay informed" }}</a>
     </div>
     {% endif %}
 
@@ -96,7 +96,7 @@
       <h2>{{ service.cta_title|default:"Interested in contributing or commissioning?" }}</h2>
       <div class="ctas">
         <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">{{ service.cta_button_text|default:"Get in Touch" }}</a>
-        <a href="{% url 'research' %}" class="btn btn-outline-light">Research House</a>
+        <a href="{% url 'research' %}" class="btn btn-outline-light">{{ site_text.publication_research_house_cta|default:"Research House" }}</a>
       </div>
     </div>
   </div>
