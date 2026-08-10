@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 from unfold.admin import ModelAdmin
-from .models import SiteSetting, HomepageSection, ValuePillar, HeroSlide, TrustBadge
+from .models import SiteSetting, HomepageSection, ValuePillar, HeroSlide, TrustBadge, SiteText
 from publications.models import Publication
 from messages_app.models import ContactMessage, Inquiry
 
@@ -138,6 +138,14 @@ class TrustBadgeAdmin(ModelAdmin):
     list_editable = ['is_active', 'order']
     list_filter   = ['is_active']
     search_fields = ['title']
+
+
+@admin.register(SiteText)
+class SiteTextAdmin(ModelAdmin):
+    list_display  = ['label', 'group', 'key', 'value']
+    list_editable = ['value']
+    list_filter   = ['group']
+    search_fields = ['label', 'key', 'value']
     readonly_fields = ['image_preview']
 
     def image_preview(self, obj):

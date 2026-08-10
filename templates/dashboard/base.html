@@ -86,6 +86,10 @@
         <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
         Navigation Menu
       </a>
+      <a href="{% url 'dashboard:site_text_index' %}" class="sb-item {% if page == 'site_text' %}active{% endif %}">
+        <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+        Page Text
+      </a>
 
       <!-- ── Content ── -->
       <div class="sb-group-label">Content</div>

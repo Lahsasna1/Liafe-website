@@ -27,6 +27,8 @@ urlpatterns = [
     path('trust-badges/add/',                   views.trust_badge_form,          name='trust_badge_add'),
     path('trust-badges/<int:pk>/edit/',         views.trust_badge_form,          name='trust_badge_edit'),
     path('trust-badges/<int:pk>/delete/',       views.trust_badge_delete,        name='trust_badge_delete'),
+    path('page-text/',                          views.site_text_index,           name='site_text_index'),
+    path('page-text/<str:group>/',              views.site_text_group,           name='site_text_group'),
 
     # About stats
     path('about-stats/',                        views.about_stats,               name='about_stats'),

@@ -159,3 +159,31 @@ class TrustBadge(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class SiteText(models.Model):
+    GROUPS = [
+        ('global',      'Global / Shared'),
+        ('home',        'Homepage'),
+        ('academy',     'Academy Page'),
+        ('research',    'Research House Page'),
+        ('shariah',     'Shariah Advisory Page'),
+        ('publication', 'Publication Page'),
+        ('contact',     'Contact Page'),
+    ]
+    key   = models.SlugField(max_length=120, unique=True, editable=False,
+                              help_text="Internal identifier, fixed at creation. Not shown in the dashboard.")
+    group = models.CharField(max_length=20, choices=GROUPS, default='global')
+    label = models.CharField(max_length=200, help_text="Shown in the dashboard so you know what this controls")
+    value = models.TextField(blank=True, help_text="Leave blank to use the site's default text")
+    order = models.PositiveSmallIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['group', 'order', 'label']
+        verbose_name = "Page Text"
+        verbose_name_plural = "Page Text"
+
+    def __str__(self):
+        return f"[{self.group}] {self.label}"

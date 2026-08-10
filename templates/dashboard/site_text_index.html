@@ -1,0 +1,27 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Page Text{% endblock %}
+{% block topbar_title %}Page Text{% endblock %}
+
+{% block content %}
+<div class="db-breadcrumb">
+  <a href="{% url 'dashboard:overview' %}">Dashboard</a>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+  <span>Page Text</span>
+</div>
+
+<div class="db-card" style="margin-bottom:20px;padding:12px 18px;font-size:13px;color:var(--muted);border-left:3px solid var(--primary);">
+  Small labels and button text scattered across each page — eyebrows, "Read More" style buttons, empty-state messages, form labels. Pick a page below to edit its text. Leave anything blank to keep the site's default wording.
+</div>
+
+<div class="stat-grid">
+  {% for g in groups %}
+  <a href="{% url 'dashboard:site_text_group' g.key %}" class="stat-card">
+    <div class="stat-icon stat-icon-blue">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+    </div>
+    <div class="stat-value">{{ g.count }}</div>
+    <div class="stat-label">{{ g.display }}</div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

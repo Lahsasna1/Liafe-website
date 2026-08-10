@@ -1,0 +1,43 @@
+{% extends "dashboard/base.html" %}
+{% block title %}{{ group_display }} Text{% endblock %}
+{% block topbar_title %}{{ group_display }} — Page Text{% endblock %}
+{% block topbar_actions %}<a href="{% url 'dashboard:site_text_index' %}" class="tb-btn tb-btn-outline">← Back</a>{% endblock %}
+
+{% block content %}
+<div class="db-breadcrumb">
+  <a href="{% url 'dashboard:overview' %}">Dashboard</a>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+  <a href="{% url 'dashboard:site_text_index' %}">Page Text</a>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+  <span>{{ group_display }}</span>
+</div>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="db-card" style="max-width:820px;">
+    <div class="db-card-header"><div class="db-card-title">{{ group_display }}</div></div>
+    <div class="db-card-body">
+      {% if items %}
+      {% for item in items %}
+      <div class="form-field form-full" style="margin-bottom:16px;">
+        <label class="form-label">{{ item.label }}</label>
+        <textarea name="value_{{ item.pk }}" rows="2" style="width:100%;">{{ item.value }}</textarea>
+        <div class="form-hint">Leave blank to use the site's default wording for this text.</div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="empty-state">
+        <div class="empty-title">Nothing here yet</div>
+        <div class="empty-text">This page's text hasn't been made editable yet.</div>
+      </div>
+      {% endif %}
+    </div>
+    {% if items %}
+    <div class="form-actions">
+      <button type="submit" class="tb-btn tb-btn-primary">Save Changes</button>
+      <a href="{% url 'dashboard:site_text_index' %}" class="tb-btn tb-btn-outline">Cancel</a>
+    </div>
+    {% endif %}
+  </div>
+</form>
+{% endblock %}

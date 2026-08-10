@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.http import JsonResponse
 
-from core.models import SiteSetting, HomepageSection, HeroSlide, ValuePillar, AboutStat, TrustBadge
+from core.models import SiteSetting, HomepageSection, HeroSlide, ValuePillar, AboutStat, TrustBadge, SiteText
 from pages.models import CustomPage, PageSection, SectionItem, NavigationMenuItem
 from services.models import Service, ServiceFeature, CourseCategory, Course, ResearchCategory, ResearchProject
 from publications.models import Publication
@@ -172,6 +172,37 @@ def trust_badge_delete(request, pk):
     return render(request, 'dashboard/confirm_delete.html', {
         'obj': obj, 'obj_name': obj.title,
         'cancel_url': reverse('dashboard:trust_badges'), 'page': 'trust_badges',
+    })
+
+
+# ── Page Text ─────────────────────────────────────────────────────────────────
+
+@staff_login_required
+def site_text_index(request):
+    groups = []
+    for key, display in SiteText.GROUPS:
+        groups.append({
+            'key': key, 'display': display,
+            'count': SiteText.objects.filter(group=key).count(),
+        })
+    return render(request, 'dashboard/site_text_index.html', {'groups': groups, 'page': 'site_text'})
+
+
+@staff_login_required
+def site_text_group(request, group):
+    display = dict(SiteText.GROUPS).get(group)
+    if display is None:
+        from django.http import Http404
+        raise Http404
+    items = SiteText.objects.filter(group=group).order_by('order', 'label')
+    if request.method == 'POST':
+        for item in items:
+            item.value = request.POST.get(f'value_{item.pk}', '')
+            item.save(update_fields=['value', 'updated_at'])
+        messages.success(request, 'Page text saved.')
+        return redirect('dashboard:site_text_group', group=group)
+    return render(request, 'dashboard/site_text_group.html', {
+        'items': items, 'group': group, 'group_display': display, 'page': 'site_text',
     })
 
 
