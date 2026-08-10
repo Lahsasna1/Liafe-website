@@ -20,6 +20,21 @@ class SiteSetting(models.Model):
     youtube_url           = models.URLField(blank=True)
     footer_text           = models.TextField(blank=True)
     copyright_text        = models.CharField(max_length=300, blank=True)
+
+    # ── Navigation & footer labels ────────────────────────────────────────
+    nav_home_label              = models.CharField(max_length=50, blank=True, default="Home")
+    nav_services_label          = models.CharField(max_length=50, blank=True, default="Services")
+    nav_contact_label           = models.CharField(max_length=50, blank=True, default="Contact")
+    nav_consult_button_text     = models.CharField(max_length=50, blank=True, default="Consult Us")
+    brand_subbrand_text         = models.CharField(max_length=50, blank=True, default="London")
+    footer_services_heading     = models.CharField(max_length=50, blank=True, default="Services")
+    footer_company_heading      = models.CharField(max_length=50, blank=True, default="Company")
+    footer_company_home_label   = models.CharField(max_length=50, blank=True, default="Home")
+    footer_company_contact_label = models.CharField(max_length=50, blank=True, default="Contact Us")
+    footer_company_about_label  = models.CharField(max_length=50, blank=True, default="About LIAFE")
+    footer_contact_heading      = models.CharField(max_length=50, blank=True, default="Contact")
+    footer_domain_text          = models.CharField(max_length=100, blank=True, default="www.ukliafe.com")
+
     created_at            = models.DateTimeField(auto_now_add=True)
     updated_at            = models.DateTimeField(auto_now=True)
 

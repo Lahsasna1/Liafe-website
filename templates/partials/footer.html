@@ -18,7 +18,7 @@
             </div>
             <div>
               <div style="font-family:var(--font-serif);font-size:17px;font-weight:500;color:#fff;">{{ site.short_name }}</div>
-              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:2px;">London</div>
+              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:2px;">{{ site.brand_subbrand_text }}</div>
             </div>
           {% endif %}
         </div>
@@ -52,7 +52,7 @@
 
       <!-- Services -->
       <div>
-        <h4>Services</h4>
+        <h4>{{ site.footer_services_heading }}</h4>
         {% for svc in nav_services %}
         <a href="{{ svc.get_absolute_url }}">{{ svc.menu_title|default:svc.title }}</a>
         {% endfor %}
@@ -60,15 +60,15 @@
 
       <!-- Company -->
       <div>
-        <h4>Company</h4>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'contact' %}">Contact Us</a>
-        <a href="{% url 'home' %}#about">About LIAFE</a>
+        <h4>{{ site.footer_company_heading }}</h4>
+        <a href="{% url 'home' %}">{{ site.footer_company_home_label }}</a>
+        <a href="{% url 'contact' %}">{{ site.footer_company_contact_label }}</a>
+        <a href="{% url 'home' %}#about">{{ site.footer_company_about_label }}</a>
       </div>
 
       <!-- Contact -->
       <div>
-        <h4>Contact</h4>
+        <h4>{{ site.footer_contact_heading }}</h4>
         <div style="display:flex;flex-direction:column;gap:12px;">
           {% if site.phone %}
           <div style="display:flex;gap:10px;align-items:flex-start;">
@@ -101,7 +101,7 @@
 
     <div class="footer-bottom">
       <span>{% if site.copyright_text %}{{ site.copyright_text }}{% else %}&copy; {% now "Y" %} {{ site.company_name }}. All rights reserved.{% endif %}</span>
-      <span>www.ukliafe.com</span>
+      <span>{{ site.footer_domain_text }}</span>
     </div>
   </div>
 </footer>

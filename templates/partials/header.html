@@ -17,18 +17,18 @@
           </div>
           <div class="brand-text">
             <span class="name">{{ site.short_name }}</span>
-            <span class="sub">London</span>
+            <span class="sub">{{ site.brand_subbrand_text }}</span>
           </div>
         {% endif %}
       </a>
 
       <!-- Desktop nav -->
       <div class="nav-links">
-        <a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+        <a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">{{ site.nav_home_label }}</a>
 
         <div class="dropdown">
           <button type="button" class="nav-link dropdown-toggle" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;padding:0;font:inherit;color:inherit;">
-            Services
+            {{ site.nav_services_label }}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="dropdown-menu">
@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        <a href="{% url 'contact' %}" class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
+        <a href="{% url 'contact' %}" class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{{ site.nav_contact_label }}</a>
 
         {% for item in nav_items %}
         <a href="{{ item.get_url }}"
@@ -51,7 +51,7 @@
       </div>
 
       <div class="nav-cta">
-        <a href="{% url 'contact' %}" class="btn btn-primary btn-sm" style="display:none;" id="nav-cta-desk">Consult Us</a>
+        <a href="{% url 'contact' %}" class="btn btn-primary btn-sm" style="display:none;" id="nav-cta-desk">{{ site.nav_consult_button_text }}</a>
         <button class="menu-btn" id="menu-btn" aria-label="Open menu">
           <svg id="menu-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
           <svg id="menu-icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -64,17 +64,17 @@
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="{% url 'home' %}" class="m-item">Home</a>
-  <span class="m-item" style="cursor:default;color:var(--muted);font-size:14px;font-family:var(--font-sans);letter-spacing:.12em;text-transform:uppercase;">Services</span>
+  <a href="{% url 'home' %}" class="m-item">{{ site.nav_home_label }}</a>
+  <span class="m-item" style="cursor:default;color:var(--muted);font-size:14px;font-family:var(--font-sans);letter-spacing:.12em;text-transform:uppercase;">{{ site.nav_services_label }}</span>
   {% for svc in nav_services %}
   <a href="{{ svc.get_absolute_url }}" class="m-sub">{{ svc.menu_title|default:svc.title }}</a>
   {% endfor %}
-  <a href="{% url 'contact' %}" class="m-item">Contact Us</a>
+  <a href="{% url 'contact' %}" class="m-item">{{ site.nav_contact_label }}</a>
   {% for item in nav_items %}
   <a href="{{ item.get_url }}" class="m-item" {% if item.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>{{ item.label }}</a>
   {% endfor %}
   <div style="margin-top:24px;">
-    <a href="{% url 'contact' %}" class="btn btn-primary" style="width:100%;justify-content:center;">Consult Us</a>
+    <a href="{% url 'contact' %}" class="btn btn-primary" style="width:100%;justify-content:center;">{{ site.nav_consult_button_text }}</a>
   </div>
 </div>
 
