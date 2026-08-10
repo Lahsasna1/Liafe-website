@@ -4,13 +4,13 @@ from django.contrib import messages
 from django.urls import reverse
 from django.http import JsonResponse
 
-from core.models import SiteSetting, HomepageSection, HeroSlide, ValuePillar, AboutStat
+from core.models import SiteSetting, HomepageSection, HeroSlide, ValuePillar, AboutStat, TrustBadge
 from pages.models import CustomPage, PageSection, SectionItem, NavigationMenuItem
 from services.models import Service, ServiceFeature, CourseCategory, Course, ResearchCategory, ResearchProject
 from publications.models import Publication
 from messages_app.models import ContactMessage, Inquiry, ContactPage
 from .forms import (
-    SiteSettingForm, HomepageSectionForm, HeroSlideForm, ValuePillarForm, AboutStatForm,
+    SiteSettingForm, HomepageSectionForm, HeroSlideForm, ValuePillarForm, AboutStatForm, TrustBadgeForm,
     CustomPageForm, PageSectionForm, SectionItemForm, NavigationMenuItemForm,
     ServiceForm, ServiceFeatureForm,
     CourseCategoryForm, CourseForm,
@@ -140,6 +140,38 @@ def value_pillar_delete(request, pk):
     return render(request, 'dashboard/confirm_delete.html', {
         'obj': obj, 'obj_name': obj.title,
         'cancel_url': reverse('dashboard:value_pillars'), 'page': 'homepage_sections',
+    })
+
+
+# ── Trust Badges ──────────────────────────────────────────────────────────────
+
+@staff_login_required
+def trust_badges(request):
+    badges = TrustBadge.objects.all()
+    return render(request, 'dashboard/trust_badges.html', {'badges': badges, 'page': 'trust_badges'})
+
+
+@staff_login_required
+def trust_badge_form(request, pk=None):
+    obj  = get_object_or_404(TrustBadge, pk=pk) if pk else None
+    form = TrustBadgeForm(request.POST or None, instance=obj)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, 'Trust badge saved.')
+        return redirect('dashboard:trust_badges')
+    return render(request, 'dashboard/trust_badge_form.html', {'form': form, 'obj': obj, 'page': 'trust_badges'})
+
+
+@staff_login_required
+def trust_badge_delete(request, pk):
+    obj = get_object_or_404(TrustBadge, pk=pk)
+    if request.method == 'POST':
+        obj.delete()
+        messages.success(request, 'Trust badge deleted.')
+        return redirect('dashboard:trust_badges')
+    return render(request, 'dashboard/confirm_delete.html', {
+        'obj': obj, 'obj_name': obj.title,
+        'cancel_url': reverse('dashboard:trust_badges'), 'page': 'trust_badges',
     })
 
 

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 from unfold.admin import ModelAdmin
-from .models import SiteSetting, HomepageSection, ValuePillar, HeroSlide
+from .models import SiteSetting, HomepageSection, ValuePillar, HeroSlide, TrustBadge
 from publications.models import Publication
 from messages_app.models import ContactMessage, Inquiry
 
@@ -130,6 +130,14 @@ class ValuePillarAdmin(ModelAdmin):
         ("Media", {"fields": ["image", "image_preview"]}),
         ("Display", {"fields": ["is_active", "order"]}),
     ]
+
+
+@admin.register(TrustBadge)
+class TrustBadgeAdmin(ModelAdmin):
+    list_display  = ['title', 'is_active', 'order']
+    list_editable = ['is_active', 'order']
+    list_filter   = ['is_active']
+    search_fields = ['title']
     readonly_fields = ['image_preview']
 
     def image_preview(self, obj):

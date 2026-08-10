@@ -52,6 +52,10 @@
         <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         About Stats
       </a>
+      <a href="{% url 'dashboard:trust_badges' %}" class="sb-item {% if page == 'trust_badges' %}active{% endif %}">
+        <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+        Trust Badges
+      </a>
 
       <!-- ── Services ── -->
       <div class="sb-group-label">Services</div>

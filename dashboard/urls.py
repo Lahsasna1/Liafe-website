@@ -23,6 +23,10 @@ urlpatterns = [
     path('value-pillars/add/',                  views.value_pillar_form,         name='value_pillar_add'),
     path('value-pillars/<int:pk>/edit/',        views.value_pillar_form,         name='value_pillar_edit'),
     path('value-pillars/<int:pk>/delete/',      views.value_pillar_delete,       name='value_pillar_delete'),
+    path('trust-badges/',                       views.trust_badges,              name='trust_badges'),
+    path('trust-badges/add/',                   views.trust_badge_form,          name='trust_badge_add'),
+    path('trust-badges/<int:pk>/edit/',         views.trust_badge_form,          name='trust_badge_edit'),
+    path('trust-badges/<int:pk>/delete/',       views.trust_badge_delete,        name='trust_badge_delete'),
 
     # About stats
     path('about-stats/',                        views.about_stats,               name='about_stats'),

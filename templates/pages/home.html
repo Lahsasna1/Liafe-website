@@ -100,12 +100,11 @@
 <div class="trust-strip">
   <div class="container">
     <div class="inner">
-      <span class="label">Trusted across UK · MENA · Asia</span>
+      <span class="label">{{ sections.trust_strip.title|default:"Trusted across UK · MENA · Asia" }}</span>
       <div class="trust-items">
-        <span class="trust-item">AAOIFI Aligned</span>
-        <span class="trust-item">IFSB Standards</span>
-        <span class="trust-item">CIBAFI Capacity Building</span>
-        <span class="trust-item">IsDB Affiliation</span>
+        {% for badge in trust_badges %}
+        <span class="trust-item">{{ badge.title }}</span>
+        {% endfor %}
       </div>
     </div>
   </div>

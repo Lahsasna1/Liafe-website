@@ -1,0 +1,55 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Trust Badges{% endblock %}
+{% block topbar_title %}Trust Badges{% endblock %}
+{% block topbar_actions %}
+<a href="{% url 'dashboard:trust_badge_add' %}" class="tb-btn tb-btn-primary">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  Add Badge
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="db-breadcrumb">
+  <a href="{% url 'dashboard:overview' %}">Dashboard</a>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+  <span>Trust Badges</span>
+</div>
+
+<div class="db-card" style="margin-bottom:12px;padding:12px 18px;font-size:13px;color:var(--muted);border-left:3px solid var(--primary);">
+  These appear in the <strong>trust strip</strong> just below the homepage hero (e.g. "AAOIFI Aligned", "IFSB Standards"). The strip's leading label is editable under <a href="{% url 'dashboard:homepage_sections' %}">Homepage Sections → Trust Strip</a>.
+</div>
+
+<div class="db-card">
+  {% if badges %}
+  <div class="db-table-wrap">
+    <table class="db-table">
+      <thead>
+        <tr><th>Order</th><th>Title</th><th>Status</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        {% for badge in badges %}
+        <tr>
+          <td style="color:var(--muted);font-size:13px;">{{ badge.order }}</td>
+          <td style="font-weight:500;">{{ badge.title }}</td>
+          <td><span class="badge {% if badge.is_active %}badge-green{% else %}badge-gray{% endif %}">{% if badge.is_active %}Active{% else %}Hidden{% endif %}</span></td>
+          <td>
+            <div class="tbl-actions">
+              <a href="{% url 'dashboard:trust_badge_edit' badge.pk %}" class="tbl-btn tbl-btn-primary">Edit</a>
+              <a href="{% url 'dashboard:trust_badge_delete' badge.pk %}" class="tbl-btn tbl-btn-danger">Delete</a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <div class="empty-title">No trust badges yet</div>
+    <div class="empty-text">Add badges to populate the trust strip on the homepage.</div>
+    <a href="{% url 'dashboard:trust_badge_add' %}" class="tb-btn tb-btn-primary">Add First Badge</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

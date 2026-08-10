@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import HomepageSection, ValuePillar, HeroSlide, AboutStat
+from .models import HomepageSection, ValuePillar, HeroSlide, AboutStat, TrustBadge
 from services.models import Service
 from publications.models import Publication
 
@@ -11,6 +11,7 @@ def home(request):
     hero_slides   = HeroSlide.objects.filter(is_active=True)
     featured_pubs = Publication.objects.filter(is_active=True, is_featured=True)[:4]
     about_stats   = AboutStat.objects.filter(is_active=True)
+    trust_badges  = TrustBadge.objects.filter(is_active=True)
     return render(request, 'pages/home.html', {
         'sections':     sections,
         'services':     services,
@@ -18,4 +19,5 @@ def home(request):
         'hero_slides':  hero_slides,
         'featured_pubs': featured_pubs,
         'about_stats':  about_stats,
+        'trust_badges': trust_badges,
     })

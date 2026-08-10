@@ -63,6 +63,7 @@ class HomepageSection(models.Model):
         ("why_choose_us", "Why Choose Us"),
         ("approach",      "Approach"),
         ("cta",           "CTA"),
+        ("trust_strip",   "Trust Strip"),
     ]
     section_name     = models.CharField(max_length=64, choices=SECTION_CHOICES, unique=True)
     title            = models.CharField(max_length=300, blank=True)
@@ -139,6 +140,22 @@ class ValuePillar(models.Model):
         ordering = ["order"]
         verbose_name = "Value Pillar"
         verbose_name_plural = "Value Pillars"
+
+    def __str__(self):
+        return self.title
+
+
+class TrustBadge(models.Model):
+    title      = models.CharField(max_length=100, help_text="e.g. 'AAOIFI Aligned'")
+    is_active  = models.BooleanField(default=True)
+    order      = models.PositiveSmallIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "Trust Badge"
+        verbose_name_plural = "Trust Badges"
 
     def __str__(self):
         return self.title

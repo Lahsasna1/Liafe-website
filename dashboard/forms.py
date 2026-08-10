@@ -1,5 +1,5 @@
 from django import forms
-from core.models import SiteSetting, HomepageSection, HeroSlide, ValuePillar, AboutStat
+from core.models import SiteSetting, HomepageSection, HeroSlide, ValuePillar, AboutStat, TrustBadge
 from services.models import Service, ServiceFeature, CourseCategory, Course, ResearchCategory, ResearchProject
 from publications.models import Publication
 from messages_app.models import Inquiry, ContactPage
@@ -36,6 +36,12 @@ class ValuePillarForm(forms.ModelForm):
         model = ValuePillar
         exclude = ['created_at', 'updated_at']
         widgets = {'description': forms.Textarea(attrs={'rows': 3})}
+
+
+class TrustBadgeForm(forms.ModelForm):
+    class Meta:
+        model = TrustBadge
+        exclude = ['created_at', 'updated_at']
 
 
 class AboutStatForm(forms.ModelForm):
